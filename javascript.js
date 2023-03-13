@@ -3,27 +3,27 @@ const clearBtn = document.querySelector('.clear');
 const operatorBtns = document.querySelectorAll('.operator');
 const numberBtns = document.querySelectorAll('.number');
 const equalBtn = document.querySelector('.equal');
+const decimalBtn = document.querySelector('.decimal');
 
-// initialize variables
 let firstNum = null;
 let operator = null;
 let displayValue = '';
+let decimalPressed = false;
 
-// function to update display
 function updateDisplay(value) {
   displayValue += value;
   display.textContent = displayValue;
 }
 
-// function to clear display
 function clearDisplay() {
   firstNum = null;
   operator = null;
   displayValue = '';
   display.textContent = displayValue;
+  decimalPressed = false;
 }
 
-// function to perform operation
+
 function operate(operator, a, b) {
   switch (operator) {
     case '+':
@@ -34,7 +34,7 @@ function operate(operator, a, b) {
       return a * b;
     case '/':
       if (b === 0) {
-        display.textContent = "Nice try, division by zero is not allowed!";
+        display.textContent = "Nice try, Don't divide by zero!";
         throw new Error("Division by zero is not allowed!");
       }
       return a / b;
@@ -43,7 +43,7 @@ function operate(operator, a, b) {
   }
 }
 
-// event listener for number buttons
+
 numberBtns.forEach(button => {
   button.addEventListener('click', () => {
     if (displayValue === "Nice try, Don't divide by zero!") {
@@ -54,26 +54,26 @@ numberBtns.forEach(button => {
 });
 
 
-// event listener for operator buttons
 operatorBtns.forEach(button => {
   button.addEventListener('click', () => {
     if (!firstNum) {
       firstNum = parseFloat(displayValue);
       operator = button.value;
       displayValue = '';
+      decimalPressed = false;
     } else {
       const secondNum = parseFloat(displayValue);
       const result = operate(operator, firstNum, secondNum);
       firstNum = result;
       operator = button.value;
       displayValue = '';
+      decimalPressed = false;
       display.textContent = result;
     }
   });
 });
 
 
-// event listener for equal button
 equalBtn.addEventListener('click', () => {
   if (firstNum && operator) {
     const secondNum = parseFloat(displayValue);
@@ -85,14 +85,16 @@ equalBtn.addEventListener('click', () => {
   }
 });
 
-// event listener for clear button
-// clearBtn.addEventListener('click', () => {
-//   clearDisplay();
-// });
-
 clearBtn.addEventListener('click', clearDisplay);
 
-// Define the add, subtract, multiply, and divide functions
+decimalBtn.addEventListener('click', () => {
+    if (!decimalPressed) {
+      updateDisplay('.');
+      decimalPressed = true;
+    }
+  });
+
+
 function add(a, b) {
   return a + b;
 }
