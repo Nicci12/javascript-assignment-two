@@ -18,7 +18,18 @@ function divide(a, b) {
 	}
 }
 
-console.log(add(4, 2)); 
-console.log(subtract(4, 2)); 
-console.log(multiply(4, 2)); 
-console.log(divide(4, 2)); 
+function operate(operator, a, b) {
+    switch (operator) {
+      case '+':
+        return add(a, b);
+      case '-':
+        return subtract(a, b);
+      case '*':
+        return multiply(a, b);
+      case '/':
+        return divide(a,b);
+      default:
+        return "Invalid operator!";
+    }
+  }
+  
