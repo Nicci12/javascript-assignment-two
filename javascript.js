@@ -33,6 +33,10 @@ function operate(operator, a, b) {
     case '*':
       return a * b;
     case '/':
+      if (b === 0) {
+        display.textContent = "Nice try, division by zero is not allowed!";
+        throw new Error("Division by zero is not allowed!");
+      }
       return a / b;
     default:
       return "Invalid operator!";
@@ -42,9 +46,13 @@ function operate(operator, a, b) {
 // event listener for number buttons
 numberBtns.forEach(button => {
   button.addEventListener('click', () => {
+    if (displayValue === "Nice try, Don't divide by zero!") {
+      clearDisplay();
+    }
     updateDisplay(button.value);
   });
 });
+
 
 // event listener for operator buttons
 operatorBtns.forEach(button => {
@@ -64,6 +72,7 @@ operatorBtns.forEach(button => {
   });
 });
 
+
 // event listener for equal button
 equalBtn.addEventListener('click', () => {
   if (firstNum && operator) {
@@ -77,6 +86,10 @@ equalBtn.addEventListener('click', () => {
 });
 
 // event listener for clear button
+// clearBtn.addEventListener('click', () => {
+//   clearDisplay();
+// });
+
 clearBtn.addEventListener('click', clearDisplay);
 
 // Define the add, subtract, multiply, and divide functions
