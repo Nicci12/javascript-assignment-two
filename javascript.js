@@ -25,28 +25,28 @@ function clearDisplay() {
 
 
 function operate(operator, a, b) {
-  switch (operator) {
-    case '+':
-      return a + b;
-    case '-':
-      return a - b;
-    case '*':
-      return a * b;
-    case '/':
-      if (b === 0) {
-        display.textContent = "Nice try, Don't divide by zero!";
-        throw new Error("Division by zero is not allowed!");
-      }
-      return a / b;
-    default:
-      return "Invalid operator!";
+    switch (operator) {
+      case '+':
+        return (a + b).toFixed(2);
+      case '-':
+        return (a - b).toFixed(2);
+      case '*':
+        return (a * b).toFixed(2);
+      case '/':
+        if (b === 0) {
+          return "Can't divide by 0!";
+        } else {
+          return (a / b).toFixed(2);
+        }
+      default:
+        return "Invalid operator!";
+    }
   }
-}
 
 
 numberBtns.forEach(button => {
   button.addEventListener('click', () => {
-    if (displayValue === "Nice try, Don't divide by zero!") {
+    if (displayValue === "Can't divide by 0!") {
       clearDisplay();
     }
     updateDisplay(button.value);
