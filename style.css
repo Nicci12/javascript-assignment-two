@@ -51,7 +51,7 @@
   }
   
   button:hover {
-    background-color: #f3f3f3;
+    background-color: #fbff0f;
   }
   
   button:active {
@@ -74,10 +74,8 @@
   }
 
   .backspace{
-    background-color: #ff5c5c;
+    background-color: #5cff5c;
     color: #fff;
-    font-size: smaller;
-    word-wrap: break-word;
   }
   @media (max-width: 480px) {
     .calculator {
