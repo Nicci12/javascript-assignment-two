@@ -100,3 +100,24 @@ decimalBtn.addEventListener('click', () => {
     let newValue = currentValue.slice(0, -1);
     display.textContent = newValue;
   });
+
+  document.addEventListener('keydown', event => {
+    const key = event.key;
+    if (!isNaN(parseInt(key))) {
+      const numberBtn = document.querySelector(`.number[value="${key}"]`);
+      if (numberBtn) {
+        numberBtn.click();
+      }
+    } else if (key === '.') {
+      decimalBtn.click();
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+      const operatorBtn = document.querySelector(`.operator[value="${key}"]`);
+      if (operatorBtn) {
+        operatorBtn.click();
+      }
+    } else if (key === 'Enter') {
+      equalBtn.click();
+    } else if (key === 'Backspace') {
+      backspaceBtn.click();
+    }
+  })
