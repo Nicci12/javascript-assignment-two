@@ -4,6 +4,7 @@ const operatorBtns = document.querySelectorAll('.operator');
 const numberBtns = document.querySelectorAll('.number');
 const equalBtn = document.querySelector('.equal');
 const decimalBtn = document.querySelector('.decimal');
+const backspaceBtn = document.querySelector(".backspace");
 
 let firstNum = null;
 let operator = null;
@@ -94,3 +95,8 @@ decimalBtn.addEventListener('click', () => {
     }
   });
 
+  backspaceBtn.addEventListener("click", function() {
+    let currentValue = display.textContent;
+    let newValue = currentValue.slice(0, -1);
+    display.textContent = newValue;
+  });

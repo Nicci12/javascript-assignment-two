@@ -68,7 +68,12 @@
     color: #fff;
   }
 
-  
+  .backspace{
+    background-color: #ff5c5c;
+    color: #fff;
+    font-size: smaller;
+    word-wrap: break-word;
+  }
   @media (max-width: 480px) {
     .calculator {
       max-width: 100%;
