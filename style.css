@@ -33,6 +33,11 @@
     padding-right: 10px;
     margin-bottom: 10px;
   }
+
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+  }
   
   button {
     width: 60px;
